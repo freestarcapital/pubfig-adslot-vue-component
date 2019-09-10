@@ -1,0 +1,27 @@
+<template>
+  <div id='app'>
+    <Demo />
+  </div>
+</template>
+
+<script>
+import Demo from './demo.vue'
+
+export default {
+  components: {
+    Demo
+  }
+}
+</script>
+<style>
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #app {
+    text-align: center;
+  }
+</style>

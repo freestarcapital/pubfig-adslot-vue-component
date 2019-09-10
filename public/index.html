@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>Freestar Pubfig AdSlot Vue Component Example</title>
+    <!-- FREESTAR HEADER TAG -->
+    <script data-cfasync="false" type="text/javascript">
+        var freestar = freestar || {};
+        freestar.hitTime = Date.now();
+        freestar.queue = freestar.queue || [];
+        freestar.config = freestar.config || {};
+        freestar.debug = window.location.search.indexOf('fsdebug') === -1 ? false : true;
+        freestar.config.enabled_slots = [];
+        !function(a,b){var c=b.getElementsByTagName('script')[0],d=b.createElement('script'),e='https://a.pub.network/gardeningknowhow';e+=freestar.debug?'/qa/pubfig.min.js':'/pubfig.min.js',d.async=!0,d.src=e,c.parentNode.insertBefore(d,c)}(window,document);
+    </script>
+  </head>
+  <body>
+    <noscript>
+        <strong>We're sorry but vue-js doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
