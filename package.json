@@ -20,7 +20,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-lib": "mkdir -p ./dist && rm -rf ./dist/* && cp ./src/components/freestarAdSlot.vue ./dist/index.vue"
+    "build-lib": "mkdir -p ./dist && rm -rf ./dist/* && cp ./src/components/freestarAdSlot.vue ./dist/index.vue",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "core-js": "^2.6.5",
