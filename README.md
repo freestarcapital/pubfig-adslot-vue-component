@@ -14,6 +14,7 @@ npm install --save @freestar/pubfig-adslot-vue-component
     <FreestarAdSlot
       :adRefresh=adRefreshCount
       :adUnit=adUnit
+      :channel=channel
       :classList=classList
       v-on:new-ad-slots='onNewAdSlotsHook'
       v-on:delete-ad-slots='onDeleteAdSlotsHook'
@@ -34,6 +35,7 @@ export default {
         placementName: 'div-gpt-ad-leaderboard-multi',
         slotId: 'div-gpt-ad-leaderboard-multi'
       },
+      channel: 'custom_channel',
       classList: ['m-30', 'p-15', 'b-thin-red'],
       adRefreshCount: 0
     }
@@ -90,6 +92,9 @@ export default {
 
 **adUnit**
 A *required* object with the properties `placementName` & `slotId`.
+
+**channel**
+An *optional* string of a custom channel to use.
 
 **classList**
 An *optional* array of strings representing any additional classes that should be applied to the wrapper dom element of the ad slot.

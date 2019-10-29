@@ -35,6 +35,12 @@ export default {
       },
       required: true
     },
+    channel: {
+      default: function () {
+        return null
+      },
+      type: String
+    },
     classList: {
       default: function () {
         return []
@@ -57,7 +63,7 @@ export default {
     newAdSlots: function () {
       getFreestar().then(freestar => {
         if (this.adSlotIsReady(this.adUnit)) {
-          freestar.newAdSlots(this.adUnit)
+          freestar.newAdSlots(this.adUnit, this.channel)
           this.$emit('new-ad-slots', this.adUnit.placementName)
         }
       })
