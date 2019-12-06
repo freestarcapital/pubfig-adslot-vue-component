@@ -33,7 +33,8 @@ export default {
     return {
       adUnit: {
         placementName: 'div-gpt-ad-leaderboard-multi',
-        slotId: 'div-gpt-ad-leaderboard-multi'
+        slotId: 'div-gpt-ad-leaderboard-multi',
+        targeting: ['value1', 'value2']
       },
       channel: 'custom_channel',
       classList: ['m-30', 'p-15', 'b-thin-red'],
@@ -91,7 +92,7 @@ export default {
 ### Props
 
 **adUnit**
-A *required* object with the properties `placementName` & `slotId`.
+A *required* object with *required* `placementName` & `slotId` and *optional* `targeting` properties.
 
 **channel**
 An *optional* string of a custom channel to use.
