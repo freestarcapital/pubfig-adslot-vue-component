@@ -12,6 +12,7 @@ npm install --save @freestar/pubfig-adslot-vue-component
 <template>
   <div>
     <FreestarAdSlot
+      ref='freestarAdSlotRef'
       :adRefresh=adRefreshCount
       :adUnit=adUnit
       :channel=channel
@@ -103,6 +104,13 @@ An *optional* array of strings representing any additional classes that should b
 **adRefresh**
 An *optional* number bound to the ad refresh. You can increment this value to trigger a refresh of the ad slot.
 
+### API Methods
+
+**FreestarAdSlot.setPageTargeting**
+Proxy for the GPT setTargeting call to set page level targeting. (use a ref, e.g. this.$refs.freestarAdSlotRef.setPageTargeting(key, value)) See [GPT documentation](https://developers.google.com/doubleclick-gpt/reference#googletag.PubAdsService_setTargeting) for more details
+
+**FreestarAdSlot.clearPageTargeting**
+Proxy for the GRP clearTargeting call to clear page level targeting. (use a ref, e.g. this.$refs.freestarAdSlotRef.clearPageTargeting()) See [GPT documentation](https://developers.google.com/doubleclick-gpt/reference#googletag.PubAdsService_clearTargeting) for more details
 ### Glossary
 
 **placementName**
