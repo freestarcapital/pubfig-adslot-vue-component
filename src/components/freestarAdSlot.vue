@@ -1,5 +1,7 @@
 <template>
-  <div v-bind:class='this.classes()' v-bind:id='adUnit.placementName'></div>
+  <div>
+    <div v-bind:class='this.classes()' v-bind:id='adUnit.placementName'></div>
+  </div>
 </template>
 <script>
 import { Promise } from 'q'
