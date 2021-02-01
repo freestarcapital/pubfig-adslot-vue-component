@@ -1,6 +1,8 @@
 <template>
   <div>
     <FreestarAdSlot
+      ref='freestarAdSlotRef'
+      :publisher=publisher
       :adRefresh=adRefreshCount
       :adUnit=adUnit
       :channel=channel
@@ -21,6 +23,7 @@ export default {
   name: 'Demo',
   data: function () {
     return {
+      publisher: 'gardeningknowhow',
       adUnit: {
         placementName: 'div-gpt-ad-leaderboard-multi',
         slotId: 'div-gpt-ad-leaderboard-multi',
@@ -47,10 +50,8 @@ export default {
     // example of manually refreshing an ad
     onAdRefresh: function () {
       this.adRefreshCount++
-    }
-  },
-  mounted: function () {
-    this.$nextTick(() => {
+    },
+    createAdRefreshExample: function () {
       // example of automatically refreshing an ad every 5 seconds a total of 5 times
       const interval = setInterval(() => {
         const maxRefreshes = 5
@@ -59,9 +60,15 @@ export default {
           clearInterval(interval)
         }
       }, 5000)
+    }
+  },
+  mounted: function () {
+    this.$nextTick(() => {
+      this.createAdRefreshExample()
     })
   }
 }
+
 </script>
 
 <style>

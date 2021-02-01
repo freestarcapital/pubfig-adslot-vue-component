@@ -2,29 +2,17 @@
   <div v-bind:class='this.classes()' v-bind:id='adUnit.placementName'></div>
 </template>
 <script>
-import { Promise } from 'q'
-
-const getFreestar = () => {
-  return new Promise((resolve, reject) => {
-    const maxTries = 10
-    let retryCount = 0
-    const waitForFreestarReady = setInterval(() => {
-      if (window.freestar && window.googletag && window.googletag.apiReady) {
-        clearInterval(waitForFreestarReady)
-        resolve(window.freestar)
-      } else if (retryCount === maxTries) {
-        clearInterval(waitForFreestarReady)
-        reject('Failed to find freestar object')
-      } else {
-        retryCount++
-      }
-    }, 10)
-  })
-}
+import Freestar from '../freestarWrapper'
 
 export default {
   name: 'FreestarAdSlot',
   props: {
+    publisher: {
+      default: function () {
+        return ''
+      },
+      type: String
+    },
     adUnit: {
       default: function () {
         return {}
@@ -61,32 +49,39 @@ export default {
       return this.classList.join(' ')
     },
     newAdSlots: function () {
-      getFreestar().then(freestar => {
-        if (this.adSlotIsReady(this.adUnit)) {
-          freestar.newAdSlots(this.adUnit, this.channel)
-          this.$emit('new-ad-slots', this.adUnit.placementName)
-        }
-      })
+      if (this.adSlotIsReady(this.adUnit)) {
+        this.adSlot = Freestar.newAdSlot(this.adUnit.placementName, this.channel)
+        this.$emit('new-ad-slots', this.adUnit.placementName)
+      }
     },
     deleteAdSlots: function () {
-      getFreestar().then(freestar => {
-        if (this.adSlotIsReady(this.adUnit)) {
-          freestar.deleteAdSlots(this.adUnit)
-          this.$emit('delete-ad-slots', this.adUnit.placementName)
-        }
-      })
+      if (this.adSlotIsReady(this.adUnit)) {
+        Freestar.deleteAdSlot(this.adUnit.placementName, this.adSlot)
+        this.$emit('delete-ad-slots', this.adUnit.placementName)
+      }
+    },
+    setPageTargeting: function (key, value) {
+      Freestar.setPageTargeting(key, value)
+    },
+    clearPageTargeting: function (key) {
+      Freestar.clearPageTargeting(key)
+    },
+    loadPubfig: function () {
+      Freestar.init(this.publisher)
+      this.newAdSlots()
     }
   },
   mounted: function () {
+    this.loadPubfig()
     this.$nextTick(this.newAdSlots)
   },
   destroyed: function () {
-    this.deleteAdSlots()
+    Freestar.deleteAdSlot(this.adUnit.placementName, this.adSlot)
   },
   watch: {
     adRefresh() {
+      Freestar.refreshAdSlot(this.adUnit.placementName, this.adSlot)
       this.$emit('ad-refresh', this.adUnit.placementName)
-      this.newAdSlots()
     }
   }
 }
