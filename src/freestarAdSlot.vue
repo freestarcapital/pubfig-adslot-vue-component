@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import Freestar from '../freestarWrapper'
+import Freestar from './freestarWrapper'
 
 export default {
   name: 'FreestarAdSlot',

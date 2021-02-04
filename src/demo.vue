@@ -17,7 +17,7 @@
 
 <script>
 /* eslint no-console: off */
-import FreestarAdSlot from './components/freestarAdSlot.vue'
+import FreestarAdSlot from './freestarAdSlot.vue'
 
 export default {
   name: 'Demo',
