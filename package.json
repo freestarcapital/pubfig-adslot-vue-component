@@ -17,10 +17,18 @@
   },
   "homepage": "https://github.com/freestarcapital/pubfig-adslot-vue-component#readme",
   "license": "ISC",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "unpkg": "dist/index.min.js",
+  "browser": {
+    "./sfc": "src/components/freestarAdSlot.vue"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "build-lib": "mkdir -p ./dist && rm -rf ./dist/* && cp ./src/components/freestarAdSlot.vue ./dist/index.vue",
+    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "build:umd": "rollup --config rollup.config.js --format umd --file dist/index.umd.js",
+    "build:es": "rollup --config rollup.config.js --format es --file dist/index.esm.js",
+    "build:unpkg": "rollup --config rollup.config.js --format iife --file dist/index.min.js",
     "publish": "npm publish --access public"
   },
   "dependencies": {
@@ -28,12 +36,17 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.3",
+    "@rollup/plugin-commonjs": "^17.1.0",
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-eslint": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
+    "@vue/compiler-sfc": "^3.0.5",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "rollup": "^2.38.4",
+    "rollup-plugin-vue": "^6.0.0",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
@@ -58,9 +71,5 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ],
-  "main": "./dist/index.vue",
-  "files": [
-    "dist/*"
   ]
 }
