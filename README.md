@@ -40,14 +40,8 @@ Vue.use(FreestarAdSlot, { publisher: 'publisherString' });
 </template>
 
 <script>
-  /* eslint no-console: off */
-  import FreestarAdSlot from './FreestarAdSlot.vue';
-
   export default {
     name: 'Demo',
-    components: {
-      FreestarAdSlot,
-    },
     data() {
       return {
         adUnit: {

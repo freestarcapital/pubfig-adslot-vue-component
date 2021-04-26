@@ -10,7 +10,7 @@ manage the ad unit.
 ```vue
 <template>
   <div>
-    <FreestarAdSlot
+    <freestar-ad-slot
       :ad-refresh="adRefreshCount"
       :placement-name="adUnit.placementName"
       :targeting="adUnit.targeting"
@@ -30,14 +30,8 @@ manage the ad unit.
 </template>
 
 <script>
-/* eslint no-console: off */
-import FreestarAdSlot from './FreestarAdSlot.vue';
-
 export default {
   name: 'Demo',
-  components: {
-    FreestarAdSlot,
-  },
   data() {
     return {
       adUnit: {
