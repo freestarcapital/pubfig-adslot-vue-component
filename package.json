@@ -63,7 +63,7 @@
     "> 1%",
     "last 2 versions"
   ],
-  "main": "./dist/index.js",
+  "main": "./dist/pubfig-adslot-vue.common.js",
   "files": [
     "dist/*"
   ]
