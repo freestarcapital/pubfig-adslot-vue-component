@@ -1,8 +1,11 @@
-import Vue from 'vue'
-import App from './app.vue'
+import Vue from 'vue';
+import App from './app.vue';
+import FreestarAdSlot from './index';
 
-Vue.config.productionTip = false
+Vue.use(FreestarAdSlot, { publisher: 'gardeningknowhow' });
+
+Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App)
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount('#app');
