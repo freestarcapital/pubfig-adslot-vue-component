@@ -20,7 +20,7 @@
   "license": "ISC",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name pubfig-adslot-vue src/index.js && rm ./dist/demo.html"
+    "build": "vue-cli-service build --target lib --name pubfig-adslot-vue src/index.js && rm ./dist/demo.html ./dist/pubfig-adslot-vue.umd.* ./dist/pubfig-adslot-vue.common.js.map"
   },
   "dependencies": {
     "lodash.isequal": "^4.5.0",
